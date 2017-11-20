@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pythontest
+spec:
+  containers:
+    - name: pythontest
+      image: sravangdocker/pythontest:dev
+      imagePullPolicy: Always
+      command: [ "echo", "SUCCESS" ]
