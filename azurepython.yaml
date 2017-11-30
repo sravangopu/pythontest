@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: az-python-deployment
+  labels:
+    app: az-python
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: az-python
+  template:
+    metadata:
+      labels:
+        app: az-python
+    spec:
+      containers:
+      - name: az-python
+        image: docker pull sravangdocker/azurepython:dev
+        imagePullPolicy: IfNotPresent
