@@ -1,10 +1,18 @@
 apiVersion: v1
-kind: Pod
+kind: ReplicationController
 metadata:
   name: python
 spec:
-  containers:
-    - name: python
-      image: sravangdocker/python:test
-      imagePullPolicy: Always
-      command: [ "echo", "SUCCESS" ]
+  replicas: 3
+  selector:
+    app: python
+  template:
+    metadata:
+      name: python
+      labels:
+        app: python
+    spec:
+      containers:
+      - name: python
+        image: sravangdocker/python:test
+        imagePullPolicy: IfNotPresent
